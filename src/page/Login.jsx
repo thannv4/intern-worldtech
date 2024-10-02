@@ -19,9 +19,9 @@ const Login = () => {
         </label>
       </div>
       <div className='buttons'>
-      <button>Sign in</button>
+      <button className="login-button">Sign in</button>
       <p>OR</p>
-      <button ><Link to="/signup" style={{color:"black"}}>Sign up</Link></button>
+      <button className="login-button"><Link to="/signup" style={{color:"white"}}>Sign up</Link></button>
       </div>
     </div>
   );
