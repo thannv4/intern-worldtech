@@ -23,9 +23,9 @@ const Regsiter = () => {
             </label>
           </div>
           <div className='buttons'>
-          <button>Sign up</button>
+          <button className="regsiter-button">Sign up</button>
           <p>OR</p>
-          <button ><Link to="/login" style={{color:"black"}}>Sign in</Link></button>
+          <button className="regsiter-button"><Link to="/login" style={{color:"white"}}>Sign in</Link></button>
           </div>
         </div>
       );
