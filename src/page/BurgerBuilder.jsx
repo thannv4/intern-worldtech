@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import {useNavigate } from "react-router-dom";
 import "./BurgerBuilder.scss";
 
 const BurgerBuilder = () => {
+  const navigate = useNavigate();
+
   const toppingPrices = {
     salad: 0.7,
     bacon: 1.5,
@@ -15,8 +18,7 @@ const BurgerBuilder = () => {
     cheese: 0,
     meat: 0,
   });
-
-  const calculateTotalPrice = () => {
+  const totalPrice  = () => {
     let total = 0;
     for (const topping in toppings) {
       total += toppings[topping] * toppingPrices[topping];
@@ -37,13 +39,15 @@ const BurgerBuilder = () => {
       [topping]: Math.max(0, prevToppings[topping] - 1),
     }));
   };
-
+  const handleCheckout = () => {
+    navigate("/checkout", { state: { toppings, totalPrice: totalPrice() } });
+  };
+  
   return (
-    <div>
     <div className="burger-builder">
       <h2>Build Your Burger</h2>
       <div className="burger">
-        <div className="burger-image">
+        <div className="burger-image1">
           <input type="text" className="bread-top" readOnly value="" />
           {toppings.salad > 0 && (
             <input
@@ -79,26 +83,22 @@ const BurgerBuilder = () => {
           )}
           <input type="text" className="bread-bottom" readOnly value="" />
         </div>
-        <h3>Total Price: ${calculateTotalPrice()}</h3>
+        <h3>Total Price: ${totalPrice()}</h3>
       </div>
-      <div className="toppings">
+
+      <div className="buttonss">
         {Object.keys(toppingPrices).map((topping) => (
           <div key={topping}>
-            <label>
-              {topping.charAt(0).toUpperCase() + topping.slice(1)}:{" "}
-              
-            </label>
-            <div className="buttonss">
-              <button onClick={() => removeTopping(topping)}>- Less</button>
-              <button onClick={() => addTopping(topping)}>+ More</button>
-            </div>
+            <label>{topping.charAt(0).toUpperCase() + topping.slice(1)} </label>
+            <button onClick={() => removeTopping(topping)}>- Less</button>
+            <button onClick={() => addTopping(topping)}>+ More</button>
           </div>
         ))}
       </div>
-    </div>
-        <div className="checkout">
-        <button>Checkout</button>
-        </div>
+
+      <div className="checkout">
+      <button onClick={handleCheckout}>Checkout</button>
+      </div>
     </div>
   );
 };
