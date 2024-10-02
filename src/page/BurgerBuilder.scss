@@ -20,8 +20,7 @@
     align-items: center;
     margin-bottom: 20px;
   }
-  
-  .burger-image {
+  .burger-image1 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,7 +28,6 @@
     padding: 10px;
     position: relative;
   }
-  
   .bread-top,
   .bread-bottom {
     width: 100%;
@@ -79,24 +77,54 @@
   }
   .buttonss {
     display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
-  }
+    flex-direction: column;
+    align-items: flex-start;
   
-  button {
-    background-color: #a2a7a2;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 12px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-left: 10px;
-  }
+    div {
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
   
-  button:hover {
-    background-color: #606460;
+      label {
+        margin-right: 10px;
+        font-weight: bold;
+      }
+    }
+    button {
+      margin: 0;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #6f7072;
+      color: white;
+      transition: background-color 0.3s;
+      margin-left: 130px;
+  
+      &:hover {
+        background-color: #38393a;
+      }
+  
+      &:active {
+        transform: scale(0.98);
+      }
+    }
   }
-  .checkout{
+
+  .checkout {
+    margin-top: 50px;
     text-align: center;
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #6e706e;
+      color: white;
+
+      &:hover {
+        background-color: #3b3b3b;
+      }
+    }
   }
