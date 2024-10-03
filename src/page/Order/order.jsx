@@ -17,11 +17,14 @@ const Order = () => {
       navigate("/order");
       return;
     }
-    if (toppings && totalPrice) {
-      const newOrder = { formData, toppings, totalPrice };
-      const updatedOrders = Array.isArray(storedOrders)
-        ? [...storedOrders, newOrder]
-        : [newOrder];
+
+    const newOrder = { formData, toppings, totalPrice };
+    const orderExists = storedOrders.some(
+      (order) => JSON.stringify(order) === JSON.stringify(newOrder)
+    );
+
+    if (!orderExists) {
+      const updatedOrders = [...storedOrders, newOrder];
       localStorage.setItem("orderData", JSON.stringify(updatedOrders));
     }
   }, [formData, toppings, totalPrice, navigate, storedOrders]);

@@ -26,14 +26,19 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const storedOrders = JSON.parse(localStorage.getItem("orderData")) || [];
+
+    const newOrder = { formData, toppings, totalPrice };
+
+    const updatedOrders = [...storedOrders, newOrder];
+    localStorage.setItem("orderData", JSON.stringify(updatedOrders));
+
     console.log("Order Submitted:", formData, toppings, totalPrice);
-    navigate("/order", {
-      state: { formData, toppings, totalPrice },
-    });
+    navigate("/order");
   };
 
   if (!toppings || !totalPrice) {
-    return <div>Error: Missing checkout data.</div>;
+    return <div>Error.</div>;
   }
 
   return (
@@ -112,7 +117,6 @@ const Checkout = () => {
         <div className="form-group">
           <label htmlFor="note"></label>
           <textarea
-            type="text"
             id="note"
             name="note"
             value={formData.note}
