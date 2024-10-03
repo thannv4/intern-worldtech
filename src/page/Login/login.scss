@@ -1,4 +1,4 @@
-.regsiter-form {
+.login-form {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -19,21 +19,22 @@
 
 .buttons {
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-left: 40%;
 }
 p {
-  margin-left: 14%;
+  margin-left: 8%;
 }
-.regsiter-button {
+.login-button {
   background-color: #a2a7a2;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  padding: 4px 10px;
 }
 
-.regsiter-button:hover {
+.login-button:hover {
   background-color: #606460;
 }

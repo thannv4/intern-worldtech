@@ -6,10 +6,10 @@ const BurgerBuilder = () => {
   const navigate = useNavigate();
 
   const toppingPrices = {
-    salad: 0.7,
-    bacon: 1.5,
-    cheese: 2.0,
-    meat: 2.5,
+    salad: 1.5,
+    bacon: 1.9,
+    cheese: 2.5,
+    meat: 3.5,
   };
 
   const [toppings, setToppings] = useState({

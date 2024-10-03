@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Checkout.scss";
 
 const Checkout = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+
   const { toppings, totalPrice } = location.state || {};
 
   const [formData, setFormData] = useState({
@@ -25,6 +27,9 @@ const Checkout = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Order Submitted:", formData, toppings, totalPrice);
+    navigate("/order", {
+      state: { formData, toppings, totalPrice },
+    });
   };
 
   if (!toppings || !totalPrice) {
@@ -45,7 +50,9 @@ const Checkout = () => {
                 type="text"
                 className={topping}
                 readOnly
-                value={`${topping.charAt(0).toUpperCase() + topping.slice(1)} x${quantity}`}
+                value={`${
+                  topping.charAt(0).toUpperCase() + topping.slice(1)
+                } x${quantity}`}
               />
             ) : null
           )}
@@ -64,7 +71,6 @@ const Checkout = () => {
             onChange={handleChange}
             required
             placeholder="Name"
-
           />
         </div>
         <div className="form-group">
@@ -77,7 +83,6 @@ const Checkout = () => {
             onChange={handleChange}
             required
             placeholder="Phone"
-
           />
         </div>
         <div className="form-group">
@@ -90,7 +95,6 @@ const Checkout = () => {
             onChange={handleChange}
             required
             placeholder="Email"
-
           />
         </div>
         <div className="form-group">
@@ -103,7 +107,6 @@ const Checkout = () => {
             onChange={handleChange}
             required
             placeholder="Address"
-
           />
         </div>
         <div className="form-group">
@@ -114,7 +117,7 @@ const Checkout = () => {
             name="note"
             value={formData.note}
             onChange={handleChange}
-            placeholder="node"
+            placeholder="Note"
           />
         </div>
 
