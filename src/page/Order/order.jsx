@@ -31,7 +31,6 @@ const Order = () => {
 
   return (
     <div className="order-page">
-      <h2>Order Confirmation</h2>
       {Array.isArray(storedOrders) && storedOrders.length > 0 ? (
         <table className="order-table">
           <thead>
